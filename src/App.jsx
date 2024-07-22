@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import LandingPage from "./pages/LandingPage";
+import ManageAccount from "./pages/ManageAccount";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/manage-acc" element={<ManageAccount />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>

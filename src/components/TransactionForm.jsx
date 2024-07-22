@@ -18,7 +18,7 @@ const TransactionForm = () => {
     const endpoint = {
       deposit: 'deposit',
       withdraw: 'withdraw',
-      transfer: 'transfer',
+      // transfer: 'transfer',
     }[transactionType];
 
     try {
@@ -53,7 +53,7 @@ const TransactionForm = () => {
           <select name="transactionType" value={transactionType} onChange={(e) => setTransactionType(e.target.value)} className="w-full p-2 border border-gray-300 rounded">
             <option value="deposit">Deposit</option>
             <option value="withdraw">Withdraw</option>
-            <option value="transfer">Transfer</option>
+            {/* <option value="transfer">Transfer</option> */}
           </select>
         </div>
         <button type="submit" className="bg-purple-500 text-white py-2 px-4 rounded">Submit</button>
