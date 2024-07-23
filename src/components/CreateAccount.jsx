@@ -1,6 +1,4 @@
-// src/components/CreateAccount.js
-
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const CreateAccount = () => {
@@ -16,11 +14,24 @@ const CreateAccount = () => {
     setError("");
 
     try {
+      const token = localStorage.getItem("token");
+      
+      if (!token) {
+        setMessage("You must be logged in to create an account.");
+        return;
+      }
+
       const response = await axios.post("http://localhost:4000/admin/create-acc", {
         name,
         email,
         initBalance: parseFloat(initBalance),
-      });
+      },
+    {
+      headers: {
+            Authorization: `Bearer ${token}`,
+      },
+    });
+      console.log("Account created:", response.data);
       setMessage("Account created successfully.");
       setName("");
       setEmail("");

@@ -12,7 +12,19 @@ const DeleteAccount = () => {
     setError("");
 
     try {
-      const response = await axios.delete(`http://localhost:4000/admin/delete-acc/${accNo}`);
+      const token = localStorage.getItem("token");
+      
+      if (!token) {
+        setMessage("You must be logged in to create an account.");
+        return;
+      }
+
+      const response = await axios.delete(`http://localhost:4000/admin/delete-acc/${accNo}`,{
+      headers: {
+            Authorization: `Bearer ${token}`,
+      },
+    });
+      console.log("Account deleted:", response.data);
       setMessage("Account deleted successfully.");
       setAccNo("");
     } catch (err) {

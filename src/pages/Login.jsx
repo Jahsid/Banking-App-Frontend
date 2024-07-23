@@ -5,17 +5,19 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/public/login', { username, password });
+      localStorage.setItem("token", response.data.token);
       console.log('Login successful:', response.data);
       navigate('/home');
+      setMessage("Login successful!");
     } catch (err) {
-      setError('Invalid username or password.');
+      setMessage("Login failed.");
     }
   };
 
@@ -41,7 +43,7 @@ const Login = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        {error && <p className="text-red-500">{error}</p>}
+        {message && <p>{message}</p>}
         <button type="submit" className="bg-teal-500 text-white py-2 px-4 rounded">Login</button>
       </form>
     </div>

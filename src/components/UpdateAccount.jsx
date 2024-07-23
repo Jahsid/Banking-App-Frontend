@@ -14,10 +14,23 @@ const UpdateAccount = () => {
     setError("");
 
     try {
+      const token = localStorage.getItem("token");
+      
+      if (!token) {
+        setMessage("You must be logged in to update an account.");
+        return;
+      }
+
       const response = await axios.put(`http://localhost:4000/admin/update-acc/${accNo}`, {
         name,
         email,
+      },
+      {
+        headers: {
+              Authorization: `Bearer ${token}`,
+        },
       });
+      console.log("Account updated:", response.data);
       setMessage("Account updated successfully.");
       setAccNo("");
       setName("");

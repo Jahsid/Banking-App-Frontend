@@ -5,6 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const ManageAccount = () => {
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    }
     
   return (
     <div>
@@ -12,9 +17,15 @@ const ManageAccount = () => {
         <nav className="container mx-auto flex justify-between items-center">
           <div className="text-2xl font-bold">MyBankApp</div>
           <div className="space-x-4">
+          <button
+              className="bg-white text-teal-500 px-4 py-2 rounded"
+              onClick={() => navigate("/home")}
+            >
+              Home
+            </button>
             <button
               className="bg-white text-teal-500 px-4 py-2 rounded"
-              onClick={() => navigate("/")}
+              onClick={handleLogout}
             >
               Logout
             </button>
