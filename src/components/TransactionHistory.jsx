@@ -17,7 +17,7 @@ const TransactionHistory = () => {
     setError(null);
 
     try {
-      const response = await axios.get(`http://localhost:4000/public/transaction/${accountNo}`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/public/transaction/${accountNo}`);
       setTransactions(response.data);
     } catch (error) {
       console.error("Fetch error:", error); // Log error for debugging

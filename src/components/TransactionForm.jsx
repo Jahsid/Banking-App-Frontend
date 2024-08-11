@@ -22,7 +22,7 @@ const TransactionForm = () => {
     }[transactionType];
 
     try {
-      const response = await axios.post(`http://localhost:4000/transaction/${endpoint}`, transactionData);
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/transaction/${endpoint}`, transactionData);
       alert('Transaction successful!');
       console.log('Transaction:', response.data);
     } catch (error) {

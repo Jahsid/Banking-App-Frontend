@@ -7,7 +7,7 @@ const AccountInfo = () => {
 
   const fetchAccountInfo = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/public/acc-info/${accountNo}`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/public/acc-info/${accountNo}`);
       setAccountInfo(response.data);
     } catch (error) {
       alert('Failed to fetch account info: ' + error.response.data);

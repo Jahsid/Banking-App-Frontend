@@ -21,7 +21,7 @@ const UpdateAccount = () => {
         return;
       }
 
-      const response = await axios.put(`http://localhost:4000/admin/update-acc/${accNo}`, {
+      const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/admin/update-acc/${accNo}`, {
         name,
         email,
       },

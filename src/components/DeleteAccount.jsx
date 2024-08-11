@@ -19,7 +19,7 @@ const DeleteAccount = () => {
         return;
       }
 
-      const response = await axios.delete(`http://localhost:4000/admin/delete-acc/${accNo}`,{
+      const response = await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/admin/delete-acc/${accNo}`,{
       headers: {
             Authorization: `Bearer ${token}`,
       },

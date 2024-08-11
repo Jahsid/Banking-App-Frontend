@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/public/login', { username, password });
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/public/login`, { username, password });
       localStorage.setItem("token", response.data.token);
       console.log('Login successful:', response.data);
       navigate('/home');

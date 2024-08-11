@@ -21,7 +21,7 @@ const CreateAccount = () => {
         return;
       }
 
-      const response = await axios.post("http://localhost:4000/admin/create-acc", {
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/admin/create-acc`, {
         name,
         email,
         initBalance: parseFloat(initBalance),
